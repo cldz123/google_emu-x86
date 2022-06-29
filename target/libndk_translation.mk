@@ -34,5 +34,8 @@ PRODUCT_COPY_FILES += \
 
 endif
 
+SYSTEM_EXT_YES := $(shell test -d $(LOCAL_PATH)proprietary/system_ext && echo yes)
+ifeq ($(SYSTEM_EXT_YES),yes)
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(dir $(LOCAL_PATH))proprietary/system_ext,$(TARGET_COPY_OUT_SYSTEM)/system_ext) 
+endif

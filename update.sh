@@ -34,8 +34,12 @@ echo -e ${teal}"This script requires the following dependencies: binwalk, curl/w
 echo -e ${reset}""${reset} 
 
 rompath=$(pwd)
-vendor_path="$rompath/vendor/google/emu-x86"
-TARGET_DIR="$rompath/vendor/google/emu-x86/proprietary"
+vendor_path="$rompath/google/emu-x86"
+TARGET_DIR="$rompath/google/emu-x86/proprietary"
+if [[ -f "$rompath/update.sh" ]]; then
+  vendor_path="$rompath/"
+  TARGET_DIR="$rompath/proprietary"
+fi
 
 ARCH="${1}"
 ARCH="${ARCH:="x86_64"}"
